@@ -122,4 +122,34 @@ class Alouette {
 		$resultat = self::appelReponse('Je '.$action.' '.$membre);
 		return $resultat;
 	}
+
+	static public function formulaire($donnees){
+		$resultat = '<form action="perso.php" method="get">';
+		$resultat.='<div>
+						<label for="oiseau">Oiseau</label>
+						<input type="text" name="oiseau" id="oiseau" value="'.$donnees['oiseau'].'"/>
+					</div>';
+		$resultat.='<div>
+						<label for="qualite">Qualité</label>
+						<input type="text" name="qualite" id="qualite" value="'.$donnees['qualite'].'"/>
+					</div>';
+		$resultat.='<div>
+						<label for="action">Action</label>
+						<input type="text" name="action" id="action" value="'.$donnees['action'].'"/>
+					</div>';
+		$resultat.='<div>
+						<label for="membres">Membres</label>
+						<textarea name="membres" id="membres" cols="30" rows="10">';
+		$resultat.=	implode("\n", $donnees['membres']);
+
+		// foreach($donnees['membres'] as $idMembres => $membre){
+		// 	$resultat.=$membre ."\n";
+		// }
+		$resultat.='</textarea>';
+		$resultat.='</div>';
+		$resultat.='<div><input type="submit" value="Composer"></div>';
+		$resultat.='</form>';
+
+		return $resultat;
+	}
 }
